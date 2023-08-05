@@ -5,67 +5,69 @@ output: html_document
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+**Nowadays, the disparities about racial demographics in prisons is one of the societal concerns in United States. And it's important to solve this issue. In order to have a clearer understanding to the situation of incarceration, I will use this report to analyze the data and represent them in visualized forms.The chosen variables are year, black_prison_pop.**
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as: 
-
 - What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
+  **According to the table generated, all the average values are shown**
+  
+- Where is my variable the highest?
+  **According to the data calculated, it's New York County with a value of 24818**
+  
+- How much has black_prison_pop change over the last 5 years?
+  **According to the data calculated, the black_prison_pop increases 131 over the last 5 years**
+  
+- How much has black_female_prison_pop change over the last 5 years?
+  **According to the data calculated, the black_female_prison_pop increases 10 over the last 5 years**
+  
+- How much has black_male_prison_pop change over the last 5 years?
+  **According to the data calculated, the black_male_prison_pop increases  over the last 5 years**
 
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
+**I got five values through analyzing the variable of black_prison_pop.For the first information, all the values are shown table. Second value is the county that has the highest black_prison_pop, which is New York County with a value of 24818. The third value is black_prison_pop change over the last 5 years, increasing 131.The fourth and fifth values each find the changes of female and male prison pop, which are 10 and 131**
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-pop.csv")
+
+```
+
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+```{r}
+rows <- nrow(data)
+print(rows)
+columns <- ncol(data)
+print(columns)
+```
+
+**The Vera Institute collected data and the data was collected by working with governments , local organizations and community members.The reason for collecting the data is that to stop the incarceration of people of color and people experiencing poverty.There are 153811 observations in the data and 36 features in data.When working with this data, there is an ethical question that is there biased results generated because of the data inaccuracy and missing. Also, there are two limitations with this data. Firstly, the accuracy of specific data is concerning.There might be some data that is not included in data set.Secondly, the data set contains many NAs which will largely affect the result of analyzing, leading to a biased conclusion.**
 
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
 ``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+source("chart1_example.R")
+trend_chart
 ```
+**The reason I included this chart is to see the trending of the prison population growth over time,having a clearer understanding to the tendency.The chart shows that the Black prison population is larger than the White prison population.Also, the overall prison population is increasing through years.**
+
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r}
+source("chart2_example.R")
+comparison
+```
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+**The reason I included this chart is to have a direct understanding of the comparison of male and female prison population in different counties in WA.From the chart, we can see that the black prison population is are all about male. And the King County has the biggest population**
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r}
+source("map_example.R")
+prison_pop_map
+```
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
+**The reason included this map is to have a clear understanding of the black prison population situation in different states in United States. From the map, we can find that in Seattle and some regions in the middle and the north of the United States, the black prison population situation is most serious, about 4K. For most of other states, the color is grey, meaning the black prison population is relatively low.**
 
